@@ -26,5 +26,10 @@
 - scalability
 - security
 - managed IT services are avaiable
-# push directory from local host to remote host
+# AWS EC2 running app and able to acess it
+## push directory from local host to remote host
 - rsync -avzh -e "ssh -i eng99.pem" /Users/venkateshvivekandhan/desktop/app ubuntu@ec2-3-250-190-143.eu-west-1.compute.amazonaws.com:/home/ubuntu/app2/
+# in Ec2
+- run provising script to update,upgrade, install nginx, all required dependencies, nodejs with correct version
+- set up reverse proxy
+- allow port 3000 by editing security group inbound rules(add a rule type: custom TCP, port range:3000, source:custom(0.0.0.0/0),description: allow access to node app on port 3000)
