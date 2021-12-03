@@ -154,5 +154,76 @@ min =2, max =3
 - Add Notification: choose an SNS topic
 - Tag : {Name:"name_of_ec2"}
 - review and launch the ASG
+# S3
+## using awscli from ec2 ssh terminal
+- sudo apt-get update -y
+  108  sudo apt-get upgrade -y
+  109  clear
+  110  python --version
+  111  sudo apt-install python3
+  112  sudo get-apt install python3
+  113  sudo apt-get install python3-pip
+  114  python --version
+  115  alias python=pthon3
+  116  python --version
+  117  alias python=python3
+  118  python --version
+  119  sudo apt install awscli
+  120  python3 -m pip install awscli
+  121  aws configure
+  122  ls
+  123  aws s3 ls
+  124  clear
+  125  aws s3 mb s3://eng99-vigneshraj
+  126  aws s3 ls
+  127  sudo nano Readme.md
+  128  ls
+  129  cat Readme.md
+  130  clear
+  131  aws s3 cp Readme.md s3://eng99-vigneshraj
+  132  sudo rm -rf Readme.md
+  133  ls
+  134  aws s3 cp s3://eng99-vigneshraj/Readme.md
+  135  aws s3 cp s3://eng99-vigneshraj/Readme.md .
+  136  ls
+  137  aws s3 rm s3://eng99-vigneshraj
+  138  aws s3 ls
+  139  aws s3 rm s3://eng99-vigneshraj
+  140  aws s3 ls
+  141  aws s3 rm s3://eng99-vigneshraj.
+  142  aws s3 ls
+  143  aws s3 rm s3://eng99-vigneshraj
+  144  aws s3 ls
+  145  aws s3 rb s3://eng99-vigneshraj --force  
+  146  aws s3 ls
+  147  history
+
+  - create a bucket: aws s3 mb s3://eng99-vigneshraj (underscore not allowed)
+  - upload to bucket: aws s3 cp file_in_ec2 s3://eng99-vigneshraj
+  - download from bucket: aws s3 cp s3://eng99-vigneshraj.
+  - remove file from bucket: aws s3 rm s3://eng-vigneshraj/folder/file
+  - delete bucket: aws s3 rb s3://eng99-vigneshraj --force
+  ## using boto3 python 
+  - import boto3
+
+### s3_client = boto3.client('s3')
+
+ ### Create bucket
+  location = {'LocationConstraint': 'eu-west-1'}
+  s3_client.create_bucket(Bucket="eng99-vigneshraj1",CreateBucketConfiguration=location)
+
+### Upload file to bucket
+    import os
+    object_name = os.path.basename(file_name)
+    s3_client.upload_file(file_name, bucket, object_name) 
+ 
+### Download file from bucket
+    s3.download_file('BUCKET_NAME', 'OBJECT_NAME', 'FILE_NAME')
+>still need to familiarise
+### Delete file from bucket
+    s3.delete_object(<bucket_name>, <file_pathon_bucket>)
+
+### Delete Bucket
+    s3.delete_bucket(<bucket_name>)
 
 
