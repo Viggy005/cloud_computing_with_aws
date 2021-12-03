@@ -111,7 +111,7 @@
 # multi-cloud deployment - banks must have it(regulatory requirment)
 - it is possible to keep resources from differnt cloud providers in the same VPC( app from aws db from azure) need to make "VPN"
 
-# To launch APP with Auto Scaling
+# Highly Available and scalable multi AZs deployment
 - create a lauch template with AMI of a machine that had all depeneceies and was able to run APP
 - create a auto scaling group with the launch template created
 ## how to create launch template:
