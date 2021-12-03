@@ -86,6 +86,7 @@
 - click on create subscription
 - Topic ARN: choose the alarm yu have created
 - protocol: choose the protocol(email,sms,etc)
+- end point: email or phone number where to send the notification
 - confirm subscription from our side
 - click on create subscription
 - you will recieve notification when your alarm triggers 
