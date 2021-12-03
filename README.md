@@ -91,3 +91,68 @@
 - click on create subscription
 - you will recieve notification when your alarm triggers 
 
+# How to make your app Highly Available and Scalable
+# Highly Avaibale
+- Redundancy—ensuring that critical system components have another identical componet that cn take over in case of failure
+- Monitoring—identifying problems in production systems that may disrupt or degrade 
+- Failover — the ability to switch from an active system component to a redundant component in case of failure, imminent failure, degraded performance or functionality.
+- Failback — the ability to switch back from a redundant component to the primary active component when it has recovered from failure
+> AWS Helps us
+# day 15
+## lanuch template for our auto scaling group
+## Auto Scaling Group
+## attach to VPC - 3 subnets in 3 diff AZ's
+## sg fro app
+## all ec2 have Nginx installed on
+## region eu-AZ's
+## disaster recovery plan
+# hybrid cloud deployment - fintech, banks
+# multi-region-deployment -big organisations
+# multi-cloud deployment - banks must have it(regulatory requirment)
+- it is possible to keep resources from differnt cloud providers in the same VPC( app from aws db from azure) need to make "VPN"
+
+# To launch APP with Auto Scaling
+- create a lauch template with AMI of a machine that had all depeneceies and was able to run APP
+- create a auto scaling group with the launch template created
+## how to create launch template:
+- search for ec2 in search bar
+- click on ec2
+- find the side tab
+- under Instances: click on "Lauch Template"
+- click on "create launch template"
+> steps to be followed in setting up lauch template
+- name: add a clearly identifyable name
+- auto scaling guidance: TICK THE BOX
+- AMI of machine you would like to spin up
+- Instance type: t2 nano
+- key pair: eng99
+- network: VPC
+- security group: select appropriate
+- Resource Tags: {Name:"name_of_ec2"}
+- Advanced Detail: under user data:
+add shell script to run on machine's being spun up
+- CLICK "Create launch template"
+
+## how to create auto scaling group:
+- search for ec2 in search bar
+- click on ec2
+- find the side tab
+- under Auto Scalling: click on "Auto scalling Groups"
+- click on "create an auto scalling group"
+> steps to be followed in setting 
+up the group:
+- Name: enter name of ags
+- Launch Template: choose the template we want
+- Network: Availablity zone and subnets: add 1a,1b,1c(3 AZ's)
+- Load Balancer: create a new one of attach existing one(make sure its application LB, internetfacing LB)
+- Health check:ec2
+- Monitoring: tick the box
+- Group Size: desired=2
+min =2, max =3
+- scaling policy:none
+- instance scalein protection:none
+- Add Notification: choose an SNS topic
+- Tag : {Name:"name_of_ec2"}
+- review and launch the ASG
+
+
