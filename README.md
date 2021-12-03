@@ -33,3 +33,60 @@
 - run provising script to update,upgrade, install nginx, all required dependencies, nodejs with correct version
 - set up reverse proxy
 - allow port 3000 by editing security group inbound rules(add a rule type: custom TCP, port range:3000, source:custom(0.0.0.0/0),description: allow access to node app on port 3000)
+
+# AWS Services:
+## 1) Ec2
+- type ec2 in the search bar
+- click on launch instance
+- OS: select the operating system we want our remote machine to run
+- Family: selecte the family we want our machine in(depends on the task we want machine to perform: USE CASE)
+- Configure Instance Details: VPC, which Subnet, Auto assign private IP, etc
+- Storage: add required storage
+- Security group: outbound(allow everything), inbound(allow as per our requirment)
+- key pair: select key pair
+- launch
+
+## 2) Security Group (we can name it so that we use for further ec2)
+- very important to set up properly 
+- make sure all required acess are given
+- and unwanted access are denied
+> OUTBOUND:
+- usuaally set to allow everything
+> INBOUND:
+- SSH from the IP we will be accessing the machine
+- HTTP from IP: 0.0.0.0/0 to allow for public access
+- HTTP from IP: ::/0 to allow for public acess
+- Custom TCP IP:x.x.x.x PORT_RANGE: the port we want to give access to(eg 3000,27017) to allow access to any ports.
+
+## 3) AMI (Amazon Machine Image)
+- this takes a snapshot of an ec2's current status(all downloaded softwares, edited files,etc) and can we used to launch an ec2 that will be an identical copy to the ec2 we took a snap shot off
+> steps to take AMI:
+- we select the instance
+- go to actions
+- choose image and templates
+- select create image
+> Fill in
+- image name
+- add volume,tags
+- click create imagne
+
+## 4)Alarm
+- select the ec2
+- go to actions
+- click on monitor and troubleshoot
+- click on manage cloud watch alarms
+- set up notification message you want it to show up when alarm goes off
+- alarm actions: set up action when alarm goes off
+- alarm threshold : metric for the alarm
+- click on create
+
+## 5) SNS (simple notification service)
+- type sns in search and click into it
+- goto subscriptions
+- click on create subscription
+- Topic ARN: choose the alarm yu have created
+- protocol: choose the protocol(email,sms,etc)
+- confirm subscription from our side
+- click on create subscription
+- you will recieve notification when your alarm triggers 
+
