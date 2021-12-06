@@ -36,4 +36,17 @@
 - When you create a subnet, you specify the IPv4 CIDR block for the subnet, which is a subset of the VPC CIDR block
 - Each subnet must reside entirely within one Availability Zone and cannot span zones
 - By launching instances in separate Availability Zones, you can protect your applications from the failure of a single zone.
-## 
+## what is NACL
+- An optional layer of security that acts as a firewall for controlling traffic in and out of a subnet. You can associate multiple subnets with a single network ACL, but a subnet can be associated with only one network ACL at a time.
+## difference between statefull and stateless
+- Security group is the firewall of EC2 Instances.
+- Network ACL is the firewall of the VPC Subnets
+- Security groups are tied to an instance whereas Network ACLs are tied to the subnet.
+- Security groups are stateful: This means any changes applied to an incoming rule will be automatically applied to the outgoing rule. e.g. If you allow an incoming port 80, the outgoing port 80 will be automatically opened.
+- Network ACLs are stateless: This means any changes applied to an incoming rule will not be applied to the outgoing rule. e.g. If you allow an incoming port 80, you would also need to apply the rule for outgoing traffic.
+> Rules: Allow or Deny
+- Security group support allow rules only (by default all rules are denied). e.g. You cannot deny a certain IP address from establishing a connection.
+- Network ACL support allow and deny rules. By deny rules, you could explicitly deny a certain IP address to establish a connection example: Block IP address 123.201.57.39 from establishing a connection to an EC2 Instance.
+ ## VPC Diagram
+ 
+
