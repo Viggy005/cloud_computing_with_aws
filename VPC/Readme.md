@@ -50,8 +50,8 @@
  ## VPC Diagram
 
  # DAY 14 (practical)
- - step1: create a vpc
- - step2: Internet Gateway(IG)
+ -  step1: create a vpc
+ -  step2: Internet Gateway(IG)
  -     2.1 - attach the IG with our VPC
  - step3: pubic subnet for our app
  - step4: create routing table(RT) with route/rule
@@ -62,4 +62,20 @@
  -      port 3000
  -      port 80 HTTP
  -      HTTP- SSL
+![](vpc_public_subnet.png)
+# complete app and db deployment
 
+![](vpc-app-db-setup.png)
+- create 2 subnets(public,private)
+- set the SG of ec2's in private to not allow to allowed access from internet
+- create a NACL for db allowing all traffic from and to app_subnet(and atach it to db subnet)
+> Detailed:
+-       create a vpc wth cidr 10.0.0.0/16
+-       create a subnet: cidr 10.0.13.0/24 and set nacl to allow all traffic from source =0.0.0.0/0 (set both inbound and outbound)
+-       Security group for app: 1)ssh from my ip,2)custom tcp to port 3000 from 0.0.0.0/0, 3) http frm 0.0.0.0/0
+-       create a subnet: cidr 10.0.14.0/24 and set nacl to allow all traffic from 10.0.13.0/24(ip of app_subnet) set both inbound and outbound
+-       SG for db: custom Tcp from 10.0.13.0/24(ip of app subnet) to port 27017
+-       ssh into app
+-       environment variable:"sudo nano .bashrc" DB_HOST:"mongodb://10.0.14.171:27017/posts" where '10.0.14.171' is the PRIVATE IP of db "source ~/.bashrc"
+-       set up reverse proxy "sudo nano /etc/nginx/sites-available/default"->"sudo nginx -t"->"sudo systemctl restart nginx"
+-       run it
