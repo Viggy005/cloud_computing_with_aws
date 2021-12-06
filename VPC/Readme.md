@@ -48,5 +48,18 @@
 - Security group support allow rules only (by default all rules are denied). e.g. You cannot deny a certain IP address from establishing a connection.
 - Network ACL support allow and deny rules. By deny rules, you could explicitly deny a certain IP address to establish a connection example: Block IP address 123.201.57.39 from establishing a connection to an EC2 Instance.
  ## VPC Diagram
- 
+
+ # DAY 14 (practical)
+ - step1: create a vpc
+ - step2: Internet Gateway(IG)
+ -     2.1 - attach the IG with our VPC
+ - step3: pubic subnet for our app
+ - step4: create routing table(RT) with route/rule
+ -          4.1 Edit routes to allow IG and VPC(edit routes)
+ -          4.2 associate our RT to our public subnet(edit subnet association)
+ - Create a security group or create when we launch our app(public subnets)
+ -      port 22:from my ip only
+ -      port 3000
+ -      port 80 HTTP
+ -      HTTP- SSL
 
