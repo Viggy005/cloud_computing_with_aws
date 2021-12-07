@@ -63,7 +63,7 @@
  -      port 80 HTTP
  -      HTTP- SSL
 ![](vpc_public_subnet.png)
-# complete app and db deployment
+# complete app and db deployment(db no intenet)
 
 ![](vpc-app-db-setup.png)
 - create 2 subnets(public,private)
@@ -79,3 +79,11 @@
 -       environment variable:"sudo nano .bashrc" DB_HOST:"mongodb://10.0.14.171:27017/posts" where '10.0.14.171' is the PRIVATE IP of db "source ~/.bashrc"
 -       set up reverse proxy "sudo nano /etc/nginx/sites-available/default"->"sudo nginx -t"->"sudo systemctl restart nginx"
 -       run it
+# set up internet for database in private subnet(so that we can update):
+## using NAT:
+-       launch an nat instance(ami should be a nat) into the public subnet of the vpc
+-       update the routing table of private subnet to 'vpcadress:local' and also '0.0.0.0/0:instace(nat)'
+-       sg of both nat  add 'icmp-all-0.0.0.0/0' 'tcp-22-0.0.0.0/0' 'tcp-80-0.0.0.0/0'
+-       sg for db 'icmp-all-ip_of_publicsubnet', 'ssh-ip_of_publicsubnet', '' 
+
+![](NAT.png)
