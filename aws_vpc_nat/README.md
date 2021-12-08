@@ -18,12 +18,15 @@
 **Public_subnet(app & NAT)**:
 -        1) '10.0.0.0/16:local' for all resources inside vpc to communicate with each other
 -        2) '0.0.0.0/0:IG' to connect to internetgateway for internet
+![](RT_pub.png)
 **Private_subnet(DB )**:
 -        1) '10.0.0.0/16:local' for all resources inside vpc to communicate with each other
 -        2) '0.0.0.0/0:NAT_Instance' to connect to nat_instance to be able to access internet inside db indirectly
+![](RT_pri.png)
 **Bastion_subnet(Bastion)**:
 -        1) '10.0.0.0/16:local' for all resources inside vpc to communicate with each other
 -        2) '0.0.0.0/0:IG' to connect to internetgateway for internet
+![](RT_bas.png)
 
 ## SG rules
 **APP Instance:**
