@@ -4,13 +4,45 @@
 
 **aws networking**
 - ip adress
+        VPC : 10.0.0.0/16
+        subnet_public: 10.0.13.0/24
+        subnet_private: 10.0.14.0/24
+        subnet_bastion: 10.0.15.0/24
 - cidr block
 - ipv4 and ipv6
 
-**vpc and its resorces**
-![](add a vpc diagram)
-- route table
-- sg rules
+# vpc and its resorces
+![](VPC.png)
+## route table
+      
+**Public_subnet(app & NAT)**:
+-        1) '10.0.0.0/16:local' for all resources inside vpc to communicate with each other
+-        2) '0.0.0.0/0:IG' to connect to internetgateway for internet
+**Private_subnet(DB )**:
+-        1) '10.0.0.0/16:local' for all resources inside vpc to communicate with each other
+-        2) '0.0.0.0/0:NAT_Instance' to connect to nat_instance to be able to access internet inside db indirectly
+**Bastion_subnet(Bastion)**:
+-        1) '10.0.0.0/16:local' for all resources inside vpc to communicate with each other
+-        2) '0.0.0.0/0:IG' to connect to internetgateway for internet
+
+## SG rules
+**APP Instance:**
+-       1)SSH: MY_IP
+-       2)Custom TCP(port 3000):Any_ip(0.0.0.0/0)
+
+![](SG_APP1.png)
+**DB Instance:**
+  
+![](SG_DB1.png) 
+**NAT Instance**
+![](SG_NAT.png)
+
+**Bastion Instance**
+![](SG_BASTION.png)
+
+
+
+
 - subnet cidr blcoks
 - connectivity betweenD1: app and db,D2: app nat db
 
