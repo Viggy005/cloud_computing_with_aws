@@ -46,7 +46,11 @@
 
 
 
-- subnet cidr blcoks
+## subnet cidr blocks
+-       entire VPC: 10.0.0.0/16
+-       public_subnet: 10.0.13.0/24
+-       private_subnet: 10.0.14.0/24
+-       bastion_subnet: 10.0.15.0/24
 - connectivity betweenD1: app and db,D2: app nat db
 
 **2 tier architecyure deployment in our own apc**
