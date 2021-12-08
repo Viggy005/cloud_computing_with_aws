@@ -1,4 +1,5 @@
 # VPC
+https://github.com/brittanyharrison/aws_VPC/blob/main/README.md
 ## what is a CIDR Block
 - Classless Inter-Domain Routing (CIDR) block basically is a method for allocating IP addresses and IP routing
 - Eg. 10.0.0.0/24 means
@@ -87,3 +88,12 @@
 -       sg for db 'icmp-all-ip_of_publicsubnet', 'ssh-ip_of_publicsubnet', '' 
 
 ![](NAT.png)
+
+# heading
+## h2
+### h3
+#### h4
+**bold*
+> note
+- bullet point
+-
