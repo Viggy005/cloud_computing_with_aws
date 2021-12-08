@@ -12,36 +12,36 @@
 - ipv4 and ipv6
 
 # vpc and its resorces
-![](VPC.png)
+![](pics/VPC.png)
 ## route table
       
 **Public_subnet(app & NAT)**:
 -        1) '10.0.0.0/16:local' for all resources inside vpc to communicate with each other
 -        2) '0.0.0.0/0:IG' to connect to internetgateway for internet
-![](RT_pub.png)
+![](pics/RT_pub.png)
 **Private_subnet(DB )**:
 -        1) '10.0.0.0/16:local' for all resources inside vpc to communicate with each other
 -        2) '0.0.0.0/0:NAT_Instance' to connect to nat_instance to be able to access internet inside db indirectly
-![](RT_pri.png)
+![](pics/RT_pri.png)
 **Bastion_subnet(Bastion)**:
 -        1) '10.0.0.0/16:local' for all resources inside vpc to communicate with each other
 -        2) '0.0.0.0/0:IG' to connect to internetgateway for internet
-![](RT_bas.png)
+![](pics/RT_bas.png)
 
 ## SG rules
 **APP Instance:**
 -       1)SSH: MY_IP
 -       2)Custom TCP(port 3000):Any_ip(0.0.0.0/0)
 
-![](SG_APP1.png)
+![](pics/SG_APP1.png)
 **DB Instance:**
   
-![](SG_DB1.png) 
+![](pics/SG_DB1.png) 
 **NAT Instance**
-![](SG_NAT.png)
+![](pics/SG_NAT.png)
 
 **Bastion Instance**
-![](SG_BASTION.png)
+![](pics/SG_BASTION.png)
 
 
 
